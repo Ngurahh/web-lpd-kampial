@@ -24,7 +24,7 @@
     <div class="container">
         <div class="section-1">
             <div class="row">
-                <div class="col {-6">
+                <div class="col-md-6">
                     <h2 class="greeting"><strong>Om Swastiastu</strong></h2>
                     <p class="description">
                         Selamat Datang di Website Lembaga Perkreditan Desa (LPD) Desa Adat Kampial. 
@@ -35,7 +35,7 @@
                         Badung dalam rangka perayaan HUT Kabupaten Badung.
                     </p>
                 </div>
-                <div class="col {-6">
+                <div class="col-md-6">
                     <iframe class="youtube" src="https://www.youtube.com/embed/XFspqbU84WE?si=E8RVTV6jDaMBTuj9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
@@ -74,10 +74,6 @@
     @media (max-width: 990px) {
         .description {
             margin-bottom: 1.5rem;
-        }
-
-        .youtube {
-            margin: 3rem 0 5rem 0;
         }
     }
 </style>
