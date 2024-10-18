@@ -2,16 +2,14 @@
     <div class="container-fluid">
         <div class="auth-box">
             <div class="auth-left">
-                <h1 class="title">Selamat Datang Kembali!</h1>
-                <p class="subtitle">
-                    Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda
-                </p>
-                <button class="btn-register">Masuk</button>
+                <h1 class="title">{{ title_1 }}</h1>
+                <p class="subtitle">{{ subtitle }}</p>
+                <button @click="toggleLogin" class="btn-register">{{ btn_login }}</button>
             </div>
             <div class="auth-right">
-                <h1 class="title">Buat Akun</h1>
+                <h1 class="title">{{ title_2 }}</h1>
                 <form>
-                    <div class="form-group">
+                    <div id="name-input" class="form-group">
                         <input type="text" class="input" placeholder="Nama" />
                     </div>
                     <div class="form-group">
@@ -23,7 +21,7 @@
                             <i :class="passwordIcon"></i>
                         </button>
                     </div>
-                    <button type="submit" class="btn-signup">Daftar</button>
+                    <button type="submit" class="btn-signup">{{ btn_register }}</button>
                 </form>
             </div>
         </div>
@@ -45,6 +43,33 @@ const togglePasswordVisibility = () => {
         passwordIcon.value = 'bi bi-eye-slash';
     }
 };
+
+const title_1 = ref('Selamat Datang Kembali!');
+const subtitle = ref('Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda');
+const btn_login = ref('Masuk');
+const title_2 = ref('Buat Akun');
+const btn_register = ref('Daftar');
+
+const toggleLogin = () => {
+    const name_input = document.getElementById('name-input');
+
+    if (btn_login.value === 'Masuk') {
+        title_1.value = 'Pengguna Baru?';
+        subtitle.value = 'Segera daftarkan akun anda sekarang';
+        btn_login.value = 'Daftar';
+        title_2.value = 'Masuk';
+        name_input.style.display = 'none';
+        btn_register.value = 'Masuk';
+    } else {
+        title_1.value = 'Selamat Datang Kembali!';
+        subtitle.value = 'Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda';
+        btn_login.value = 'Masuk';
+        title_2.value = 'Buat Akun';
+        name_input.style.display = 'block';
+        btn_register.value = 'Daftar';
+    }
+};
+
 </script>
 
 <style scoped>
@@ -136,18 +161,18 @@ const togglePasswordVisibility = () => {
     border-radius: 50px;
     border: 1px solid #ccc;
     margin-bottom: 1rem;
-    height: 50px; /* Set height to align input with the icon */
+    height: 50px;
 }
 
 .toggle-password {
     background: none;
     border: none;
     position: absolute;
-    right: 10px; /* Adjust this value as needed */
-    top: 50%; /* Center vertically */
-    transform: translateY(-80%); /* Adjust vertical position */
+    right: 10px;
+    top: 50%;
+    transform: translateY(-80%);
     cursor: pointer;
-    z-index: 1; /* Ensure it is above the input */
+    z-index: 1;
 }
 
 .toggle-password i {

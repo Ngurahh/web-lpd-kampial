@@ -1,99 +1,110 @@
 <template>
-    <footer class="footer mt-auto py-3 border-top">
+    <footer class="footer">
         <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-md-3 d-flex flex-column align-items-center">
+            <div class="row">
+                <div class="col-md-2 footer-section">
                     <img
                         src="../assets/images/logo.png"
                         alt="LPD KAMPIAL"
-                        class="footer-logo mb-2"
+                        class="footer-logo"
                     />
-                    <span class="footer-text">LPD KAMPIAL</span>
-                    <div class="social-links mt-3">
-                        <a href="" target="_blank" class="me-2">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="" target="_blank">
-                            <i class="bi bi-instagram"></i>
-                        </a>
+                    <span class="footer-title"><strong>LPD Kampial</strong></span>
+                </div>
+
+                <div class="col-md-3 footer-section">
+                    <h5><strong>PERUSAHAAN</strong></h5>
+                    <ul class="list-group">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Layanan</a></li>
+                        <li><a href="#">Galeri</a></li>
+                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#">Formulir Pinjaman</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 footer-section">
+                    <h5><strong>KONTAK</strong></h5>
+                    <ul class="list-group">
+                        <li>Jl. Kampial, Nusa Dua, Bali</li>
+                        <li>Telp: (0361) 123456</li>
+                        <li>Email: info@lpd-kampial.com</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <h5>COMPANY</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">PROFILE</a></li>
-                        <li><a href="#">LAYANAN</a></li>
-                        <li><a href="#">GALERI</a></li>
-                        <li><a href="#">KONTAK</a></li>
-                        <li><a href="#">FORMULIR PINJAMAN</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>KONTAK KAMI</h5>
-                    <ul class="list-unstyled">
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                    </ul>
+                <div class="col-md-4 footer-section">
+                    <iframe
+                        class="google-map"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3942.7713733946075!2d115.198837!3d-8.807537!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd243518e5c98a9%3A0xfa7b46d60fc9be3!2sKantor%20LPD!5e0!3m2!1sid!2sid!4v1729224714319!5m2!1sid!2sid"
+                        style="border: 0"
+                        allowfullscreen
+                        loading="lazy"
+                    ></iframe>
                 </div>
             </div>
         </div>
     </footer>
 </template>
 
-<script>
-export default {
-    name: "footerComponent",
-};
-</script>
-
 <style scoped>
-.footer {
-    margin-top: 3rem;
-    background-color: white;
-    padding: 8rem 0;
+footer {
+    border-top: 2px solid rgb(183, 183, 183);
+    padding: 3rem;
+    margin-top: 5rem;
 }
 
-.footer-text {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
+.footer-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
-img {
-    margin-top: 3rem;
-    width: 16rem;
-    height: 8rem;
+.list-group {
+    list-style: none;
 }
 
-.social-links {
-    color: #555;
+.footer-logo {
+    width: 10rem;
 }
 
-.social-links a:hover {
-    color: #555;
-}
-
-li {
-    margin-bottom: 0.2rem;
+.footer-title {
+    margin-top: 0.5rem;
 }
 
 h5 {
-    font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: black;
 }
 
-a:hover {
-    text-decoration: underline;
+i {
+    display: inline-block;
+    color: black;
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
+.google-map {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+
+    .google-map {
+        height: 18rem;
+    }
 }
 </style>

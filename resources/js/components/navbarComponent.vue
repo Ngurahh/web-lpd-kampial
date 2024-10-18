@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <router-link class="navbar-brand" :to="{ name: 'beranda' }"
-                ><strong>LPD | Desa Adat Kampial</strong></router-link
+                ><img src="../assets/images/logo.png"><strong>LPD | Desa Adat Kampial</strong></router-link
             >
             <button
                 class="navbar-toggler"
@@ -72,6 +72,18 @@ nav {
     padding: 0 2.8rem;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    display: inline-block;
+    width: 2.5rem;
+    margin-right: 0.8rem;
+    vertical-align: middle;
+}
+
 .navbar-brand,
 .nav-link {
     color: black;
@@ -83,7 +95,7 @@ nav {
     margin-right: 1rem;
 }
 
-.nav-link:hover {
+.nav-link:hover:not(.btn-login) {
     border-bottom: 2px solid black;
 }
 
