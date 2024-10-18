@@ -26,7 +26,7 @@
                 <div class="col-md-3 footer-section">
                     <h5><strong>KONTAK</strong></h5>
                     <ul class="list-group">
-                        <li>Jl. Kampial, Nusa Dua, Bali</li>
+                        <li>Jalan Kampial, Nusa Dua, Bali</li>
                         <li>Telp: (0361) 123456</li>
                         <li>Email: info@lpd-kampial.com</li>
                     </ul>
