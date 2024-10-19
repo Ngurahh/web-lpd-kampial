@@ -14,19 +14,19 @@
                 <div class="col-md-3 footer-section">
                     <h5><strong>PERUSAHAAN</strong></h5>
                     <ul class="list-group">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Layanan</a></li>
-                        <li><a href="#">Galeri</a></li>
-                        <li><a href="#">Kontak</a></li>
-                        <li><a href="#">Formulir Pinjaman</a></li>
+                        <li><router-link class="nav-list" :to="{name: 'beranda'}">Beranda</router-link></li>
+                        <li><router-link class="nav-list" :to="{name: 'profil'}">Profil</router-link></li>
+                        <li><router-link class="nav-list" :to="{name: 'layanan'}">Layanan</router-link></li>
+                        <li><router-link class="nav-list" :to="{name: 'galeri'}">Galeri</router-link></li>
+                        <li><router-link class="nav-list" :to="{name: 'kontak'}">Kontak</router-link></li>
+                        <li><router-link class="nav-list" :to="{name: 'formulirPinjaman'}">Formulir Pinjaman</router-link></li>
                     </ul>
                 </div>
 
                 <div class="col-md-3 footer-section">
                     <h5><strong>KONTAK</strong></h5>
                     <ul class="list-group">
-                        <li>Jalan Kampial, Nusa Dua, Bali</li>
+                        <li>Jl. Kampial, Nusa Dua, Bali</li>
                         <li>Telp: (0361) 123456</li>
                         <li>Email: info@lpd-kampial.com</li>
                     </ul>
@@ -69,6 +69,15 @@ footer {
     list-style: none;
 }
 
+.nav-list:hover {
+    border-bottom: 2px solid black;
+}
+
+.nav-list.router-link-active {
+    color: #22980e;
+    border-bottom: 2px solid #22980e;
+}
+
 .footer-logo {
     width: 10rem;
 }
@@ -81,16 +90,22 @@ h5 {
     margin-bottom: 0.5rem;
 }
 
+h5, li, .nav-list, i {
+    color: black;
+}
+
 a {
     text-decoration: none;
-    color: black;
 }
 
 i {
     display: inline-block;
-    color: black;
     font-size: 1.5rem;
     margin: 0.5rem;
+}
+
+i:hover {
+    color: #22980e;
 }
 
 .google-map {
