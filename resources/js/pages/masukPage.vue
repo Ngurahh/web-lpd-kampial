@@ -4,24 +4,50 @@
             <div class="auth-left">
                 <h1 class="title">{{ title_1 }}</h1>
                 <p class="subtitle">{{ subtitle }}</p>
-                <button @click="toggleLogin" class="btn-register">{{ btn_login }}</button>
+                <button @click="toggleLogin" class="btn-register">
+                    {{ button_1 }}
+                </button>
             </div>
             <div class="auth-right">
                 <h1 class="title">{{ title_2 }}</h1>
-                <form>
-                    <div id="name-input" class="form-group">
-                        <input type="text" class="input" placeholder="Nama" />
+                <form @submit.prevent="submitForm">
+                    <div v-if="!isLogin" class="form-group">
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Nama"
+                            v-model="formData.name"
+                            required
+                        />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="input" placeholder="Email" />
+                        <input
+                            type="email"
+                            class="input"
+                            placeholder="Email"
+                            v-model="formData.email"
+                            required
+                        />
                     </div>
                     <div class="form-group">
-                        <input :type="passwordFieldType" class="input" placeholder="Password" />
-                        <button type="button" @click="togglePasswordVisibility" class="toggle-password">
+                        <input
+                            :type="passwordFieldType"
+                            class="input"
+                            placeholder="Password"
+                            v-model="formData.password"
+                            required
+                        />
+                        <button
+                            type="button"
+                            @click="togglePasswordVisibility"
+                            class="toggle-password"
+                        >
                             <i :class="passwordIcon"></i>
                         </button>
                     </div>
-                    <button type="submit" class="btn-signup">{{ btn_register }}</button>
+                    <button type="submit" class="btn-signup">
+                        {{ button_2 }}
+                    </button>
                 </form>
             </div>
         </div>
@@ -30,46 +56,59 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const passwordFieldType = ref('password');
 const passwordIcon = ref('bi bi-eye-slash');
 
-const togglePasswordVisibility = () => {
-    if (passwordFieldType.value === 'password') {
-        passwordFieldType.value = 'text';
-        passwordIcon.value = 'bi bi-eye';
-    } else {
-        passwordFieldType.value = 'password';
-        passwordIcon.value = 'bi bi-eye-slash';
-    }
-};
-
 const title_1 = ref('Selamat Datang Kembali!');
 const subtitle = ref('Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda');
-const btn_login = ref('Masuk');
+const button_1 = ref('Masuk');
 const title_2 = ref('Buat Akun');
-const btn_register = ref('Daftar');
+const button_2 = ref('Daftar');
+const isLogin = ref(false);
+
+const formData = ref({
+    name: '',
+    email: '',
+    password: ''
+});
+
+const togglePasswordVisibility = () => {
+    passwordFieldType.value = passwordFieldType.value === 'password' ? 'text' : 'password';
+    passwordIcon.value = passwordFieldType.value === 'text' ? 'bi bi-eye' : 'bi bi-eye-slash';
+};
 
 const toggleLogin = () => {
-    const name_input = document.getElementById('name-input');
-
-    if (btn_login.value === 'Masuk') {
+    isLogin.value = !isLogin.value;
+    if (isLogin.value) {
         title_1.value = 'Pengguna Baru?';
         subtitle.value = 'Segera daftarkan akun anda sekarang';
-        btn_login.value = 'Daftar';
+        button_1.value = 'Daftar';
         title_2.value = 'Masuk';
-        name_input.style.display = 'none';
-        btn_register.value = 'Masuk';
+        button_2.value = 'Masuk';
     } else {
         title_1.value = 'Selamat Datang Kembali!';
         subtitle.value = 'Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda';
-        btn_login.value = 'Masuk';
+        button_1.value = 'Masuk';
         title_2.value = 'Buat Akun';
-        name_input.style.display = 'block';
-        btn_register.value = 'Daftar';
+        button_2.value = 'Daftar';
     }
 };
 
+const submitForm = () => {
+    const data = formData.value;
+    const apiUrl = isLogin.value ? '/api/login' : '/api/register';
+    axios.post(apiUrl, data)
+        .then(response => {
+            console.log(response);
+            router.push({ name: 'beranda' });
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+};
 </script>
 
 <style scoped>
@@ -178,7 +217,6 @@ const toggleLogin = () => {
 .toggle-password i {
     font-size: 1.2rem;
 }
-
 
 @media (max-width: 768px) {
     .auth-box {
