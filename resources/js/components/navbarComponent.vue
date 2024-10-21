@@ -1,9 +1,10 @@
 <template>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <router-link class="navbar-brand" :to="{ name: 'beranda' }"
-                ><img src="../assets/images/logo.png"><strong>LPD | Desa Adat Kampial</strong></router-link
-            >
+            <router-link class="navbar-brand" :to="{ name: 'beranda' }">
+                <img src="../assets/images/logo.png" />
+                <strong>LPD | Desa Adat Kampial</strong>
+            </router-link>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -15,48 +16,50 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div
+                class="collapse navbar-collapse"
+                id="navbarNavAltMarkup"
+                ref="navbarCollapse"
+            >
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'beranda' }"
-                            >Beranda</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'beranda' }" @click="closeNavbar">Beranda</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'galeri' }"
-                            >Galeri</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'galeri' }" @click="closeNavbar">Galeri</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'layanan' }"
-                            >Layanan</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'layanan' }" @click="closeNavbar">Layanan</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'profil' }"
-                            >Profil</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'profil' }" @click="closeNavbar">Profil</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'kontak' }"
-                            >Kontak</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'kontak' }" @click="closeNavbar">Kontak</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link
-                            class="nav-link"
-                            :to="{ name: 'formulirPinjaman' }"
-                            >Formulir Pinjaman</router-link
-                        >
+                        <router-link class="nav-link" :to="{ name: 'formulirPinjaman' }" @click="closeNavbar">Formulir Pinjaman</router-link>
                     </li>
                 </ul>
-                <router-link class="btn-login nav-link" :to="{ name: 'masuk' }"
-                    >Masuk</router-link
-                >
+                <router-link class="btn-login nav-link" :to="{ name: 'masuk' }" @click="closeNavbar">Masuk</router-link>
             </div>
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    methods: {
+        closeNavbar() {
+            const navbar = this.$refs.navbarCollapse;
+            const collapse = bootstrap.Collapse.getInstance(navbar); // Mengambil instance Bootstrap Collapse
+            if (collapse) {
+                collapse.hide(); // Menutup navbar jika sedang terbuka
+            }
+        }
+    }
+};
+</script>
 
 <style scoped>
 nav {
