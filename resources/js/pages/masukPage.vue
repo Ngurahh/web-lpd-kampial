@@ -4,7 +4,7 @@
             <div class="auth-left">
                 <h1 class="title">{{ title_1 }}</h1>
                 <p class="subtitle">{{ subtitle }}</p>
-                <button @click="toggleLogin" class="btn-register">
+                <button @click="toggleLogin" class="button_1">
                     {{ button_1 }}
                 </button>
             </div>
@@ -45,7 +45,7 @@
                             <i :class="passwordIcon"></i>
                         </button>
                     </div>
-                    <button type="submit" class="btn-signup">
+                    <button type="submit" class="button_2">
                         {{ button_2 }}
                     </button>
                 </form>
@@ -106,7 +106,11 @@ const submitForm = () => {
             router.push({ name: 'beranda' });
         })
         .catch(error => {
-            console.log(error.response);
+            if (error.response && error.response.status === 401) {
+                console.error('Terjadi kesalahan saat masuk, coba lagi!');
+            } else {
+                console.error('Terjadi kesalahan, coba lagi!', error);
+            }
         });
 };
 </script>
@@ -162,26 +166,26 @@ const submitForm = () => {
     margin-bottom: 1.5rem;
 }
 
-.btn-register,
-.btn-signup {
+.button_1,
+.button_2 {
     border-radius: 50px;
     font-size: 14px;
     padding: 0.6rem 1.5rem;
     cursor: pointer;
 }
 
-.btn-register:hover,
-.btn-signup:hover {
+.button_1:hover,
+.button_2:hover {
     background-color: #145809;
 }
 
-.btn-register {
+.button_1 {
     background-color: transparent;
     border: 2px solid white;
     color: white;
 }
 
-.btn-signup {
+.button_2 {
     margin-top: 0.5rem;
     background-color: #22980e;
     border: none;
@@ -242,8 +246,8 @@ const submitForm = () => {
         font-size: 1rem;
     }
 
-    .btn-register,
-    .btn-signup {
+    .button_1,
+    .button_2 {
         width: 80%;
     }
 
@@ -267,8 +271,8 @@ const submitForm = () => {
         font-size: 0.9rem;
     }
 
-    .btn-register,
-    .btn-signup {
+    .button_1,
+    .button_2 {
         width: 90%;
         padding: 0.5rem 1rem;
         font-size: 12px;
